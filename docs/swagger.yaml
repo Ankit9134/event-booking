@@ -334,7 +334,20 @@ components:
         date:
           type: string
           format: date-time
-    
+    Attendance:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        event_id:
+          type: integer
+        booking_id:
+          type: string
+        entry_date:
+          type: string
+          format: date-time
     SuccessResponse:
       type: object
       properties:

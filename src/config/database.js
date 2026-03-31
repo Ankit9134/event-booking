@@ -1,26 +1,27 @@
-// config/database.js
+
 const mysql = require('mysql2/promise');
 require('dotenv').config();
-
-// Log the configuration to debug (remove after fixing)
+const fs=require('fs')
 console.log('DB Config:', {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     database: process.env.DB_NAME,
-    // Don't log password in production!
 });
-
+console.log(process.env.CA);
 const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
+    host: process.env.DB_HOST ,
+    user: process.env.DB_USER ,
     password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'event_booking',
-    port: process.env.DB_PORT || 3306,  // Default MySQL port
+    database: process.env.DB_NAME ,
+    port: process.env.DB_PORT || 3306,  
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
     enableKeepAlive: true,
-    keepAliveInitialDelay: 0
+    keepAliveInitialDelay: 0,
+    ssl:{
+    ca: fs.readFileSync('./certs/isrgrootx.pem')
+    }
 });
 pool.getConnection()
     .then(connection => {

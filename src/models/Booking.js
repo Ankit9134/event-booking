@@ -1,6 +1,5 @@
 const pool = require('../config/database');
 const { generateBookingCode } = require('../utils/generateCode');  
-
 class Booking {
     static async create(userId, eventId, numberOfTickets = 1) {
         const connection = await pool.getConnection();

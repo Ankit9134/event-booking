@@ -1,6 +1,4 @@
 const Event = require('../models/Event');
-const Booking = require('../models/Booking');
-const User = require('../models/User');
 exports.getAllEvents = async (req, res, next) => {
     try {
         const events = await Event.findAllUpcoming();
