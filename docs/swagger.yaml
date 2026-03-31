@@ -305,9 +305,9 @@ components:
           type: string
         description:
           type: string
-        date:
-          type: string
-          format: date-time
+        # date:
+        #   type: string
+        #   format: date-time
         total_capacity:
           type: integer
         remaining_tickets:
