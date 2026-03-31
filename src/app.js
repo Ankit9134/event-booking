@@ -24,7 +24,11 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/events', eventRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/users', userRoutes);
-
+app.use('/',(req, res)=>{
+    res.json({
+        message: "Welcome to Event Booking System!",
+    });
+})
 // Health check
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date() });
