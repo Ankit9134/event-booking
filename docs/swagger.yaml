@@ -5,7 +5,7 @@ info:
   description: API for managing events, users, and ticket bookings
 
 servers:
-  - url: process.env.Backend_URL
+  - url: https://event-booking-ksn8.onrender.com/api/
     # description: Development server
 
 paths:
