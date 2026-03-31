@@ -36,7 +36,8 @@ A robust and scalable Event Management System built with Node.js, Express, Seque
 ## 🔧 Installation
 
 ### 1. Clone the Repository
-Backend_URL https://event-booking-ksn8.onrender.com/
+Live https://event-booking-ksn8.onrender.com/
+
 Api  https://event-booking-ksn8.onrender.com/api/
 ```bash
 git clone https://github.com/Ankit9134/event-booking/
