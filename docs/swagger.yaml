@@ -46,14 +46,14 @@ paths:
               properties:
                 title:
                   type: string
-                  example: "Tech Conference 2024"
+                  example: "Tech Conference 2026"
                 description:
                   type: string
                   example: "Annual tech conference"
                 date:
                   type: string
                   format: date-time
-                  example: "2024-12-15"
+                  example: "2024-06-15"
                 total_capacity:
                   type: integer
                   example: 100
