@@ -20,20 +20,6 @@ class User {
     );
     return result.insertId;
   }
-  
-  static async update(id, userData) {
-    const { name, email } = userData;
-    const [result] = await db.execute(
-      'UPDATE users SET name = ?, email = ? WHERE id = ?',
-      [name, email, id]
-    );
-    return result.affectedRows > 0;
-  }
-  
-  static async delete(id) {
-    const [result] = await db.execute('DELETE FROM users WHERE id = ?', [id]);
-    return result.affectedRows > 0;
-  }
 }
 
 module.exports = User;
