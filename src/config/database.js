@@ -30,10 +30,6 @@ pool.getConnection()
     })
     .catch(err => {
         console.error(' Database connection failed:', err.message);
-        console.error('Please check:');
-        console.error('1. MySQL service is running');
-        console.error('2. Database credentials are correct');
-        console.error('3. Database exists');
     });
 
 module.exports = pool;
