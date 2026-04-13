@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+const db = require('../config/database');
 
 class Event {
     static async create(eventData) {
@@ -11,7 +11,7 @@ class Event {
         try {
             console.log('Attempting to create event with data:', { title, description, date, total_capacity });
             
-            const [result] = await pool.execute(
+            const [result] = await db.execute(
                 'INSERT INTO events (title, description, date, total_capacity, remaining_tickets) VALUES (?, ?, ?, ?, ?)',
                 [title, description, date,total_capacity, total_capacity]
             );
@@ -34,7 +34,7 @@ class Event {
 
     static async findAllUpcoming() {
         try {
-            const [rows] = await pool.execute(
+            const [rows] = await db.execute(
                 'SELECT * FROM events WHERE date > NOW() ORDER BY date ASC'
             );
             return rows;
@@ -46,7 +46,7 @@ class Event {
 
     static async findById(id) {
         try {
-            const [rows] = await pool.execute(
+            const [rows] = await db.execute(
                 'SELECT * FROM events WHERE id = ?',
                 [id]
             );
@@ -60,7 +60,7 @@ class Event {
     static async updateRemainingTickets(eventId, ticketsToBook) {
         let connection;
         try {
-            connection = await pool.getConnection();
+            connection = await db.getConnection();
             await connection.beginTransaction();
             
             const [result] = await connection.execute(
