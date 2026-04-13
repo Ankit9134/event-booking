@@ -1,8 +1,8 @@
-const pool = require('../config/database');
+const db = require('../config/database');
 const { generateBookingCode } = require('../utils/generateCode');  
 class Booking {
     static async create(userId, eventId, numberOfTickets = 1) {
-        const connection = await pool.getConnection();
+        const connection = await db.getConnection();
         try {
             await connection.beginTransaction();
             
@@ -31,7 +31,7 @@ class Booking {
     }
 
     static async findByUserId(userId) {
-        const [rows] = await pool.execute(
+        const [rows] = await db.execute(
             `SELECT b.*, e.title, e.date, e.description 
              FROM bookings b 
              JOIN events e ON b.event_id = e.id 
@@ -43,7 +43,7 @@ class Booking {
     }
 
     static async findByBookingCode(bookingCode) {
-        const [rows] = await pool.execute(
+        const [rows] = await db.execute(
             `SELECT b.*, e.title, e.date, e.description, u.name, u.email 
              FROM bookings b 
              JOIN events e ON b.event_id = e.id 
