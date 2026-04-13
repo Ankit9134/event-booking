@@ -8,7 +8,7 @@ console.log('DB Config:', {
     database: process.env.DB_NAME,
 });
 console.log(process.env.CA);
-const pool = mysql.createPool({
+const db = mysql.createPool({
     host: process.env.DB_HOST ,
     user: process.env.DB_USER ,
     password: process.env.DB_PASSWORD || '',
@@ -23,13 +23,6 @@ const pool = mysql.createPool({
     ca: fs.readFileSync('./certs/isrgrootx.pem')
     }
 });
-pool.getConnection()
-    .then(connection => {
-        console.log('Database connected successfully');
-        connection.release();
-    })
-    .catch(err => {
-        console.error(' Database connection failed:', err.message);
-    });
 
-module.exports = pool;
+
+module.exports = db;
