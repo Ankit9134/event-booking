@@ -20,15 +20,7 @@ class Event {
             return result.insertId;
         } catch (error) {
             console.error('Error creating event:', error);
-            if (error.code === 'ECONNREFUSED') {
-                throw new Error('Cannot connect to database. Please ensure MySQL is running.');
-            } else if (error.code === 'ER_BAD_DB_ERROR') {
-                throw new Error('Database does not exist. Please create the database first.');
-            } else if (error.code === 'ER_ACCESS_DENIED_ERROR') {
-                throw new Error('Invalid database credentials. Please check username and password.');
-            } else {
-                throw error;
-            }
+           throw error
         }
     }
 
