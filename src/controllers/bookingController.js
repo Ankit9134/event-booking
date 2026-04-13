@@ -1,9 +1,9 @@
 const Event = require('../models/Event');
 const Booking = require('../models/Booking');
 const User = require('../models/User');
-
+const db =require('../config/database')
 exports.createBooking = async (req, res, next) => {
-    const connection = await require('../config/database').getConnection();
+    const connection = await db.getConnection();
     try {
         await connection.beginTransaction();
         
