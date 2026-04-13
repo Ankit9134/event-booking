@@ -11,5 +11,3 @@ router.delete('/:id', userController.deleteUser);
 router.get('/:id/bookings', userController.getUserBookings);
 
 module.exports = router;
-
-module.exports = router;
