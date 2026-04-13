@@ -36,7 +36,7 @@ exports.markAttendance = async (req, res, next) => {
         });
         const totalTickets = await Attendance.getTotalTicketsByUser(booking.user_id, eventId);
     
-        res.json({
+        res.status(200).json({
             success: true,
             message: 'Attendance marked successfully',
             data: {
