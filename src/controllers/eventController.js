@@ -2,7 +2,7 @@ const Event = require('../models/Event');
 exports.getAllEvents = async (req, res, next) => {
     try {
         const events = await Event.findAllUpcoming();
-        res.json({
+        res.status(200).json({
             success: true,
             data: events
         });
