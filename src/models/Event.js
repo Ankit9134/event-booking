@@ -51,29 +51,17 @@ class Event {
 
     static async updateRemainingTickets(eventId, ticketsToBook) {
         let connection;
-        try {
-            connection = await db.getConnection();
-            await connection.beginTransaction();
-            
-            const [result] = await connection.execute(
+        try {  
+            const [result] = await db.execute(
                 'UPDATE events SET remaining_tickets = remaining_tickets - ? WHERE id = ? AND remaining_tickets >= ?',
                 [ticketsToBook, eventId, ticketsToBook]
             );
             
-            if (result.affectedRows === 0) {
-                await connection.rollback();
-                return false;
-            }
-            
-            await connection.commit();
-            return true;
+         return result.affectedRows > 0;
         } catch (error) {
-            if (connection) await connection.rollback();
             console.error('Error updating remaining tickets:', error);
             throw error;
-        } finally {
-            if (connection) connection.release();
-        }
+        } 
     }
 }
 
