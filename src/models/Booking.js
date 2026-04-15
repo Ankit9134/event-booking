@@ -18,7 +18,7 @@ class Booking {
                 numberOfTickets
             };
         } catch (error) {
-            console.log(error)
+           console.error('Error creating event:', error);
             throw error;
         }
     }
