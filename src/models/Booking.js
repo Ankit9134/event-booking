@@ -2,18 +2,13 @@ const db = require('../config/database');
 const { generateBookingCode } = require('../utils/generateCode');  
 class Booking {
     static async create(userId, eventId, numberOfTickets = 1) {
-        const connection = await db.getConnection();
-        try {
-            await connection.beginTransaction();
-            
+        try { 
             const bookingCode = generateBookingCode();  
             
-            const [result] = await connection.execute(
+            const [result] = await db.execute(
                 'INSERT INTO bookings (user_id, event_id, booking_code, number_of_tickets) VALUES (?, ?, ?, ?)',
                 [userId, eventId, bookingCode, numberOfTickets]
             );
-            
-            await connection.commit();
             
             return {
                 id: result.insertId,
@@ -23,10 +18,8 @@ class Booking {
                 numberOfTickets
             };
         } catch (error) {
-            await connection.rollback();
+            console.log(error)
             throw error;
-        } finally {
-            connection.release();
         }
     }
 
