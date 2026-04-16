@@ -1,8 +1,8 @@
-# 🎫 Event Booking System
+# Event Booking System
 
 A robust and scalable Event Management System built with Node.js, Express, Sequelize, and MySQL. This system allows users to browse events, book tickets, manage bookings, and track attendance with proper transaction handling to prevent race conditions.
 
-## ✨ Features
+## Features
 
 - **User Management**: Create, update, delete users with email validation
 - **Event Management**: Create, update, delete events with capacity tracking
@@ -15,7 +15,7 @@ A robust and scalable Event Management System built with Node.js, Express, Seque
 - **Search & Filter**: Advanced search and filtering capabilities
 - **Statistics Dashboard**: Detailed analytics for users, events, and bookings
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Runtime**: Node.js
 - **Framework**: Express.js
@@ -26,14 +26,14 @@ A robust and scalable Event Management System built with Node.js, Express, Seque
 - **UUID Generation**: UUID
 - **Development**: Nodemon
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Node.js (v14 or higher)
 - MySQL (v8.0 or higher)
 - npm or yarn package manager
 - Git
 
-## 🔧 Installation
+## Installation
 
 ### 1. Clone the Repository
 Live https://event-booking-ksn8.onrender.com/
