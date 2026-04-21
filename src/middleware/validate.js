@@ -2,7 +2,14 @@ const Joi = require('joi');
 
 const validateEvent = (req, res, next) => {
     const schema = Joi.object({
-        title: Joi.string().required().min(3).max(255),
+        title: Joi.string()
+        .pattern(/^[A-Za-z0-9 ]+$/)
+        .required()
+        .min(3)
+        .max(255)
+        .messages({
+            "string.pattern.base": "Title should not contain special characters"
+        }),
         description: Joi.string().optional(),
         date: Joi.date().iso().greater('now').required(),
         total_capacity: Joi.number().integer().positive().required()
